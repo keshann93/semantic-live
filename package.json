@@ -1,7 +1,8 @@
 {
-	"name": "semantic-live",
-	"displayName": "semantic-live",
-	"description": "semantic editor",
+	"name": "UI-live",
+	"displayName": "UI-live",
+	"description": "html previewer",
+	"publisher": "keshan",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.44.0"
