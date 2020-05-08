@@ -128,7 +128,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-select": "^2.0.17",
     "@types/rebass": "^3.0.3",
-    "@types/styled-components": "4.1.10",
+    "@types/styled-components": "5.1.0",
     "@types/styled-system": "^4.1.1",
     "@types/vscode": "^1.44.0",
     "@types/glob": "^7.1.1",
