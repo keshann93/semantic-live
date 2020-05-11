@@ -130,7 +130,7 @@
     "@types/rebass": "^4.0.5",
     "@types/styled-components": "5.1.0",
     "@types/styled-system": "^5.1.5",
-    "@types/vscode": "^1.44.0",
+    "@types/vscode": "^1.45.0",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.11.0",
