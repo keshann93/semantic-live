@@ -1,7 +1,7 @@
 {
-  "name": "UI-live",
-  "displayName": "UI-live",
-  "description": "html previewer",
+  "name": "semantic-live",
+  "displayName": "semantic-live",
+  "description": "semantic previewer",
   "publisher": "keshan",
   "version": "0.0.1",
   "engines": {
@@ -39,60 +39,6 @@
       "editor/title": [
         {
           "when": "resourceLangId == html",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == css",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == scss",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == javascript",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == typescript && isAngularComponent",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == javascriptreact",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == typescriptreact",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == postcss",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == svelte",
-          "command": "semantic-live.showPreviewer",
-          "alt": "semantic-live.showPreviewer",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == vue",
           "command": "semantic-live.showPreviewer",
           "alt": "semantic-live.showPreviewer",
           "group": "navigation"
