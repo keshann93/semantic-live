@@ -1,8 +1,5 @@
 import * as vscode from 'vscode';
-import CSSFileInspector from './file-handlers/css-file';
 import HtmlInspector from './file-handlers/html';
-import StyledComponentsInspector from './file-handlers/js';
-import DecoratedClassComponentsInspector from './file-handlers/ts';
 import { EditableBlock, FileHandler, SupportedFiletypes, UpdateActiveBlockType } from './file-handlers/types';
 
 export default class Manager {
@@ -19,20 +16,8 @@ export default class Manager {
     vscode.window.onDidChangeActiveTextEditor(activeEditor => {
       const languageId = activeEditor ? activeEditor.document.languageId : undefined;
 
-      if (languageId === 'html' || languageId === 'svelte' || languageId === 'vue') {
+      if (languageId === 'html') {
         this.inspector = HtmlInspector;
-        this.activeEditor = activeEditor;
-        this.languageId = languageId;
-      } else if (languageId === 'css' || languageId === 'scss' || languageId === 'postcss') {
-        this.inspector = CSSFileInspector;
-        this.activeEditor = activeEditor;
-        this.languageId = languageId;
-      } else if (languageId === 'javascript' || languageId === 'javascriptreact' || languageId === 'typescriptreact') {
-        this.inspector = StyledComponentsInspector;
-        this.activeEditor = activeEditor;
-        this.languageId = languageId;
-      } else if (languageId === 'typescript') {
-        this.inspector = DecoratedClassComponentsInspector;
         this.activeEditor = activeEditor;
         this.languageId = languageId;
       }
@@ -53,18 +38,7 @@ export default class Manager {
   }
 
   isAcceptableLaguage(languageId: SupportedFiletypes): boolean {
-    return (
-      languageId === 'html' ||
-      languageId === 'css' ||
-      languageId === 'scss' ||
-      languageId === 'postcss' ||
-      languageId === 'javascript' ||
-      languageId === 'typescript' ||
-      languageId === 'javascriptreact' ||
-      languageId === 'typescriptreact' ||
-      languageId === 'svelte' ||
-      languageId === 'vue'
-    );
+    return languageId === 'html';
   }
 
   parseFromActiveEditor(): void {
