@@ -126,7 +126,7 @@
     "@types/parse5": "^5.0.0",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
-    "@types/react-select": "^2.0.17",
+    "@types/react-select": "^3.0.13",
     "@types/rebass": "^3.0.3",
     "@types/styled-components": "4.1.10",
     "@types/styled-system": "^4.1.1",
