@@ -25,8 +25,7 @@ export type UpdateActiveBlockType = 'add' | 'remove';
  */
 export interface FileHandler {
   getEditableBlocks(fileContent: string, languageId: SupportedFiletypes): EditableBlock[];
-  updateProperty(activeBlock: EditableBlock, prop: string, value: string, languageId: string): string;
-  removeProperty(activeBlock: EditableBlock, prop: string): string;
+  updateProperty(value: string): string;
 }
 
 /**

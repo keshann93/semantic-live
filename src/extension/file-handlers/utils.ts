@@ -7,7 +7,7 @@ export const isAngularComponentRegex = /.component.ts$/;
 
 export const getRules = (cssString: string, syntax?: postcss.Syntax) => {
   const results: Rule[] = [];
-  const DeclarationWalker = postcss.plugin('fabulous-parser', () => {
+  const DeclarationWalker = postcss.plugin('semantic-parser', () => {
     return function(root, result) {
       return root.walkRules(rule => {
         results.push(rule);

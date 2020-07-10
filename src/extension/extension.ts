@@ -1,27 +1,70 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import ContentProvider from './ContentProvider';
+import { join } from 'path';
+import Manager from './Manager';
+import { isAngularComponentRegex } from './file-handlers/utils';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const contentProvider = new ContentProvider();
+  let currentPanel: vscode.WebviewPanel | undefined = undefined;
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "semantic-live" is now active!');
+  /**
+   * Set a custom context variable of "isAngularComponent" so that in package.json  menus.editor/title "when" clause can distinguish
+   * Angular components from other typescript files so that the plugin can remain dormant for regular typescript files
+   */
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor(activeEditor => {
+      if (activeEditor) {
+        let isAngularComponent = false;
+        try {
+          isAngularComponent = isAngularComponentRegex.test(activeEditor.document.uri.path);
+        } catch (ex) {
+          console.log('Error checking isAngularComponent', ex);
+        } finally {
+          vscode.commands.executeCommand('setContext', 'isAngularComponent', isAngularComponent);
+        }
+      }
+    })
+  );
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('semantic-live.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
+  let disposable = vscode.commands.registerCommand('semantic.showPanel', () => {
+    if (currentPanel) {
+      currentPanel.reveal(vscode.ViewColumn.Two);
+    } else {
+      currentPanel = vscode.window.createWebviewPanel('semantic', 'Fabulous', vscode.ViewColumn.Two, {
+        enableScripts: true,
+        retainContextWhenHidden: true,
+      });
+    }
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from semantic-live!');
-	});
+    currentPanel.webview.html = contentProvider.getContent(context);
 
-	context.subscriptions.push(disposable);
+    const root = join(context.extensionPath, 'icons');
+    currentPanel.iconPath = {
+      dark: vscode.Uri.file(join(root, 'icon-light.png')),
+      light: vscode.Uri.file(join(root, 'icon-dark.png')),
+    };
+
+    const manager = new Manager(currentPanel);
+
+    currentPanel.webview.onDidReceiveMessage(
+      message => {
+        manager.updateActiveBlock(message.prop, message.value, message.type);
+      },
+      undefined,
+      context.subscriptions
+    );
+
+    currentPanel.onDidDispose(
+      () => {
+        currentPanel = undefined;
+      },
+      null,
+      context.subscriptions
+    );
+  });
+
+  context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}

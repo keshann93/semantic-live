@@ -38,35 +38,30 @@ export default class Manager {
   }
 
   isAcceptableLaguage(languageId: SupportedFiletypes): boolean {
-    return languageId === 'html';
+    return (
+      languageId === 'html' ||
+      languageId === 'css' ||
+      languageId === 'scss' ||
+      languageId === 'postcss' ||
+      languageId === 'javascript' ||
+      languageId === 'typescript' ||
+      languageId === 'javascriptreact' ||
+      languageId === 'typescriptreact' ||
+      languageId === 'svelte' ||
+      languageId === 'vue'
+    );
   }
 
   parseFromActiveEditor(): void {
     if (this.activeEditor) {
       const activeFileContent = this.activeEditor.document.getText();
-      const payload = this.getPayloadForBlock(activeFileContent, this.activeEditor.selection.active);
+      const payload = activeFileContent; //this.getPayloadForBlock(activeFileContent, this.activeEditor.selection.active);
+      // const activeBlock = this.getActiveBlock(this.activeEditor.selection.active, blocks);
       this.panel.webview.postMessage({
         type: 'activeBlock',
         payload,
       });
     }
-  }
-
-  getPayloadForBlock(activeFileContent: string, cursorPosition: vscode.Position) {
-    let payload = null;
-    if (this.inspector) {
-      const blocks = this.inspector.getEditableBlocks(activeFileContent, this.languageId);
-      const activeBlock = this.getActiveBlock(cursorPosition, blocks);
-
-      this.activeBlock = activeBlock;
-      if (activeBlock) {
-        payload = activeBlock.declarations.reduce((prev: any, declaration) => {
-          prev[declaration.prop] = declaration.value;
-          return prev;
-        }, {});
-      }
-    }
-    return payload;
   }
 
   getActiveBlock(cursorPositon: vscode.Position, blocks: EditableBlock[]) {
@@ -112,9 +107,7 @@ export default class Manager {
       let updatedCSS = '';
 
       if (type === 'add') {
-        updatedCSS = this.inspector.updateProperty(this.activeBlock, prop, value, this.languageId);
-      } else {
-        updatedCSS = this.inspector.removeProperty(this.activeBlock, prop);
+        updatedCSS = this.inspector.updateProperty(value);
       }
 
       if (this.activeEditor) {
