@@ -1,17 +1,4 @@
-import { Declaration, NodeSource, Rule } from 'postcss';
-
-export type SupportedFiletypes =
-  | 'html'
-  | 'css'
-  | 'scss'
-  | 'postcss'
-  | 'javascript'
-  | 'typescript'
-  | 'javascriptreact'
-  | 'typescriptreact'
-  | 'svelte'
-  | 'vue'
-  | '';
+export type SupportedFiletypes = 'html' | '';
 
 export type UpdateActiveBlockType = 'add' | 'remove';
 
@@ -25,7 +12,8 @@ export type UpdateActiveBlockType = 'add' | 'remove';
  */
 export interface FileHandler {
   getEditableBlocks(fileContent: string, languageId: SupportedFiletypes): EditableBlock[];
-  updateProperty(value: string): string;
+  updateProperty(activeBlock: EditableBlock, prop: string, value: string, languageId: string): string;
+  removeProperty(activeBlock: EditableBlock, prop: string): string;
 }
 
 /**
@@ -43,15 +31,15 @@ export interface FileHandler {
  */
 export interface EditableBlock {
   selector: string;
-  declarations: Declaration[];
-  source?: NodeSource;
-  rule: Rule;
+  blockString: string;
+  source?: string;
+  location: any;
 }
 
 export interface StyleExpressions {
   name: string;
-  cssString: string;
-  location: NodeSource;
+  blockString: string;
+  location: any;
 }
 
 export interface LocationPosition {

@@ -38,18 +38,7 @@ export default class Manager {
   }
 
   isAcceptableLaguage(languageId: SupportedFiletypes): boolean {
-    return (
-      languageId === 'html' ||
-      languageId === 'css' ||
-      languageId === 'scss' ||
-      languageId === 'postcss' ||
-      languageId === 'javascript' ||
-      languageId === 'typescript' ||
-      languageId === 'javascriptreact' ||
-      languageId === 'typescriptreact' ||
-      languageId === 'svelte' ||
-      languageId === 'vue'
-    );
+    return languageId === 'html';
   }
 
   parseFromActiveEditor(): void {
@@ -102,35 +91,35 @@ export default class Manager {
     return cursorPosition.isAfterOrEqual(ruleStart) && cursorPosition.isBeforeOrEqual(ruleEnd);
   }
 
-  async updateActiveBlock(prop: string, value: string, type: UpdateActiveBlockType) {
+  async updateActiveBlock(value: string, type: UpdateActiveBlockType) {
     if (this.activeBlock && this.inspector) {
       let updatedCSS = '';
 
       if (type === 'add') {
         updatedCSS = this.inspector.updateProperty(value);
       }
+    }
 
-      if (this.activeEditor) {
-        const source = this.activeBlock.source;
-        const ruleStartPosition = new vscode.Position(
-          (source && source.start && source.start.line) || 0,
-          (source && source.start && source.start.column) || 0
-        );
+    if (this.activeEditor) {
+      const source = this.activeBlock.source;
+      const ruleStartPosition = new vscode.Position(
+        (source && source.start && source.start.line) || 0,
+        (source && source.start && source.start.column) || 0
+      );
 
-        const ruleEndPosition = new vscode.Position(
-          (source && source.end && source.end.line) || 0,
-          (source && source.end && source.end.column) || 0
-        );
+      const ruleEndPosition = new vscode.Position(
+        (source && source.end && source.end.line) || 0,
+        (source && source.end && source.end.column) || 0
+      );
 
-        await this.activeEditor.edit(editBuilder => {
-          editBuilder.replace(new vscode.Range(ruleStartPosition, ruleEndPosition), updatedCSS);
-        });
-        if (this.activeEditor && this.inspector) {
-          const activeFileContent = this.activeEditor.document.getText();
-          const blocks = this.inspector.getEditableBlocks(activeFileContent, this.languageId);
-          const activeRule = this.getActiveBlock(this.activeEditor.selection.active, blocks);
-          this.activeBlock = activeRule;
-        }
+      await this.activeEditor.edit(editBuilder => {
+        editBuilder.replace(new vscode.Range(ruleStartPosition, ruleEndPosition), updatedCSS);
+      });
+      if (this.activeEditor && this.inspector) {
+        const activeFileContent = this.activeEditor.document.getText();
+        const blocks = this.inspector.getEditableBlocks(activeFileContent, this.languageId);
+        const activeRule = this.getActiveBlock(this.activeEditor.selection.active, blocks);
+        this.activeBlock = activeRule;
       }
     }
   }
