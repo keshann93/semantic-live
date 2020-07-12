@@ -117,11 +117,8 @@ const HtmlInspector: FileHandler = {
   getEditableBlocks(fileContent: string, languageId?: SupportedFiletypes) {
     return getEditableBlocks(fileContent);
   },
-  updateProperty(activeBlock: EditableBlock, prop: string, value: string) {
-    return updateProperty(activeBlock.rule, prop, value);
-  },
-  removeProperty(activeBlock: EditableBlock, prop: string) {
-    return removeProperty(activeBlock.rule, prop);
+  updateProperty(fileContent: string) {
+    return fileContent;
   },
 };
 export default HtmlInspector;
