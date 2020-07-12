@@ -2,29 +2,15 @@ import { expect, assert } from 'chai';
 import { suite, test } from 'mocha-typescript'; // https://www.npmjs.com/package/mocha-typescript
 import * as vscode from 'vscode';
 import Manager from '../Manager';
-import angularTestCases from './test-cases/angular.test-case';
-import cssTestCases from './test-cases/css-file.test-case';
 import htmlTestCases from './test-cases/html.test-case';
-import reactTestCases from './test-cases/react.test-case';
-import scssTestCases from './test-cases/scss-file.test-case';
-import svelteTestCases from './test-cases/svelte.test-case';
-import vueTestCases from './test-cases/vue.test-case';
-import { TestCaseSetup } from './test-types';
 import { createMockWebviewPanel, getCursorPositionPosition, getTestFile } from './test-utils';
+import { TestCaseSetup } from './test-types';
 
 /**
  * Array of all tests case setup data structures
  * This will iterate through all test cases for the of the test case setup objects in the array
  */
-const allTestCases: TestCaseSetup[] = [
-  cssTestCases,
-  scssTestCases,
-  htmlTestCases,
-  reactTestCases,
-  angularTestCases,
-  svelteTestCases,
-  vueTestCases,
-];
+const allTestCases: TestCaseSetup[] = [htmlTestCases];
 
 for (const testCaseSetup of allTestCases) {
   console.log('Starting test case:', testCaseSetup.name);
@@ -95,7 +81,7 @@ for (const testCaseSetup of allTestCases) {
           // set active block
           this.getPayloadForBlock(text, getCursorPositionPosition(testCase.line, testCase.column));
           // update CSS
-          await this.updateActiveBlock(testCase.prop, testCase.value, testCase.type);
+          await this.updateActiveBlock(testCase.value, testCase.type);
           // re-fetch active block
           let payload = this.getPayloadForBlock(
             this.currActiveEditor.document.getText(),
@@ -118,7 +104,7 @@ for (const testCaseSetup of allTestCases) {
           // set active block
           this.getPayloadForBlock(text, getCursorPositionPosition(testCase.line, testCase.column));
           // update CSS
-          await this.updateActiveBlock(testCase.prop, testCase.value, testCase.type);
+          await this.updateActiveBlock(testCase.value, testCase.type);
           // re-fetch active block
           let payload = this.getPayloadForBlock(
             this.currActiveEditor.document.getText(),
@@ -141,7 +127,7 @@ for (const testCaseSetup of allTestCases) {
           // set active block
           this.getPayloadForBlock(text, getCursorPositionPosition(testCase.line, testCase.column));
           // update CSS
-          await this.updateActiveBlock(testCase.prop, testCase.value, testCase.type);
+          await this.updateActiveBlock(testCase.value, testCase.type);
           // re-fetch active block
           let payload = this.getPayloadForBlock(
             this.currActiveEditor.document.getText(),
@@ -168,7 +154,7 @@ for (const testCaseSetup of allTestCases) {
             // set active block
             this.getPayloadForBlock(text, getCursorPositionPosition(transformation.line, transformation.column));
             // update CSS
-            await this.updateActiveBlock(transformation.prop, transformation.value, transformation.type);
+            await this.updateActiveBlock(transformation.value, transformation.type);
             // Update the text with the updated code
             text = this.currActiveEditor.document.getText();
           }

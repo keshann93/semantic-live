@@ -42,60 +42,6 @@
           "command": "semantic.showPanel",
           "alt": "semantic.showPanel",
           "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == css",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == scss",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == javascript",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == typescript && isAngularComponent",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == javascriptreact",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == typescriptreact",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == postcss",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == svelte",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
-        },
-        {
-          "when": "resourceLangId == vue",
-          "command": "semantic.showPanel",
-          "alt": "semantic.showPanel",
-          "group": "navigation"
         }
       ]
     }

@@ -1,6 +1,5 @@
 import * as parse5 from 'parse5';
 import { EditableBlock, FileHandler, StyleExpressions, SupportedFiletypes } from './types';
-import { getDeclarations, getNodeSourceWithLocationOffset, getRules, removeProperty, updateProperty } from './utils';
 import console = require('console');
 
 /**

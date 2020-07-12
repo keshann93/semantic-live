@@ -82,7 +82,6 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <Flex p="3" flexDirection="column" backgroundColor="background">
           <FroalaEditor tag="textarea" config={config} model={state.declarations} onModelChange={handleChange} />
-          <textarea value={this.state.myTitle} onChange={this.handleInputChange} />
         </Flex>
       </ThemeProvider>
     </Fragment>
