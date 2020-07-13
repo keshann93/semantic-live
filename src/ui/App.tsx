@@ -25,7 +25,7 @@ body {
 `;
 
 const InitialState = {
-  declarations: null,
+  payload: null,
 };
 
 export default function App() {
@@ -39,6 +39,10 @@ export default function App() {
         console.log('initialized');
       },
     },
+  };
+
+  const createMarkup = () => {
+    return { __html: state.payload };
   };
 
   const handleChange = (value: any) => {
@@ -64,8 +68,8 @@ export default function App() {
     });
   }, []);
 
-  console.log(state.declarations);
-  if (state.declarations === null) {
+  console.log(state.payload);
+  if (state.payload === null) {
     return (
       <Fragment>
         <GlobalStyles />
@@ -81,7 +85,7 @@ export default function App() {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Flex p="3" flexDirection="column" backgroundColor="background">
-          <FroalaEditor tag="textarea" config={config} model={state.declarations} onModelChange={handleChange} />
+          <div dangerouslySetInnerHTML={createMarkup()} />
         </Flex>
       </ThemeProvider>
     </Fragment>

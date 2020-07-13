@@ -3,26 +3,20 @@ export interface Declarations {
 }
 
 export interface State {
-  declarations: Declarations;
+  payload: string;
 }
 
 export interface Action {
   type: string;
-  payload: {
-    prop: string;
-    value?: any;
-  };
+  payload: string;
 }
-
-export type UpdateProp = (prop: string, value: any) => void;
-export type RemoveProp = (prop: string) => void;
 
 export function reducer(state: State, { type, payload }: Action) {
   switch (type) {
     case 'resetReclarations':
       return {
         ...state,
-        declarations: payload,
+        payload,
       };
     default:
       throw new Error();
