@@ -47,7 +47,7 @@ export default class Manager {
       const payload = this.getPayloadForBlock(activeFileContent, this.activeEditor.selection.active);
       this.panel.webview.postMessage({
         type: 'activeBlock',
-        payload,
+        payload: activeFileContent,
       });
     }
   }
@@ -60,7 +60,7 @@ export default class Manager {
 
       this.activeBlock = activeBlock;
       if (activeBlock) {
-        payload = activeBlock.blockString;
+        payload = activeBlock.source;
       }
     }
     return payload;

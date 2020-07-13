@@ -1,6 +1,7 @@
 import * as parse5 from 'parse5';
 import { EditableBlock, FileHandler, StyleExpressions, SupportedFiletypes } from './types';
 import console = require('console');
+import { getNodes } from './getNodes';
 
 /**
  * Parse a document for style tags
@@ -58,8 +59,8 @@ export function getRootLevelBlocks(document: parse5.DocumentFragment) {
   let results: StyleExpressions[] = [];
   try {
     // Get any root level style tags
-    let styleNodes: parse5.DefaultTreeTextNode[] = (document as any).childNodes.map((styleNode: any) => styleNode.childNodes[0]);
-
+    let styleNodes: parse5.DefaultTreeTextNode[] = getNodes((document as any).childNodes, Infinity); // .map((styleNode: any) => styleNode.childNodes[0]);
+    // styleNodes = styleNodes.length === 1 ? styleNodes[0] : styleNodes
     // Convert format to StyleExpression
     results = styleNodes.map(node => {
       const loc = node.sourceCodeLocation as parse5.Location;
