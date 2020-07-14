@@ -9,7 +9,9 @@ import Empty from './Empty';
 // Require Editor CSS files.
 import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
+import 'froala-editor/js/plugins.pkgd.min.js';
 
+import FroalaEditorView from 'react-froala-wysiwyg';
 import FroalaEditor from 'react-froala-wysiwyg';
 
 declare var acquireVsCodeApi: any;
@@ -57,6 +59,13 @@ export default function App() {
     });
   };
 
+  const handleInputChange = e => {
+    dispatch({
+      type: 'resetReclarations',
+      payload: e.target.value,
+    });
+  };
+
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
       if (data.type === 'activeBlock') {
@@ -85,7 +94,7 @@ export default function App() {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Flex p="3" flexDirection="column" backgroundColor="background">
-          <div dangerouslySetInnerHTML={createMarkup()} />
+          <FroalaEditorView model={state.payload} />
         </Flex>
       </ThemeProvider>
     </Fragment>
