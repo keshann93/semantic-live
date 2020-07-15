@@ -1,4 +1,4 @@
-### Help us make Fabulous better
+### Help us make semantic-live better
 
 - Install dependencies by executing `yarn install`
 - Run webpack dev server by executing `yarn ui`
