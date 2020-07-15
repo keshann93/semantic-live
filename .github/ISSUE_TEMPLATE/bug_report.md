@@ -12,7 +12,7 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **To Reproduce**
-Please provide a minimal code snippet (js, css or scss) where fabulous is failing
+Please provide a minimal code snippet (html) where semantic-live is failing
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
