@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect, Fragment } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import theme from './theme';
 import { Flex } from 'rebass';
 import Theme from './theme';
@@ -68,7 +69,7 @@ export default function App() {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Flex p="3" flexDirection="column" backgroundColor="background">
-          <div dangerouslySetInnerHTML={createMarkup()} />
+          {ReactHtmlParser(state.payload)}
         </Flex>
       </ThemeProvider>
     </Fragment>
