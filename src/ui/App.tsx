@@ -6,13 +6,6 @@ import Theme from './theme';
 import { reducer } from './store';
 import 'react-tippy/dist/tippy.css';
 import Empty from './Empty';
-// Require Editor CSS files.
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-import 'froala-editor/js/plugins.pkgd.min.js';
-
-import FroalaEditorView from 'react-froala-wysiwyg';
-import FroalaEditor from 'react-froala-wysiwyg';
 
 declare var acquireVsCodeApi: any;
 const vscode = acquireVsCodeApi();
@@ -47,25 +40,6 @@ export default function App() {
     return { __html: state.payload };
   };
 
-  const handleChange = (value: any) => {
-    dispatch({
-      type: 'resetReclarations',
-      payload: value,
-    });
-
-    vscode.postMessage({
-      value,
-      type: 'add',
-    });
-  };
-
-  const handleInputChange = e => {
-    dispatch({
-      type: 'resetReclarations',
-      payload: e.target.value,
-    });
-  };
-
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
       if (data.type === 'activeBlock') {
@@ -94,7 +68,7 @@ export default function App() {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Flex p="3" flexDirection="column" backgroundColor="background">
-          <FroalaEditorView model={state.payload} />
+          <div dangerouslySetInnerHTML={createMarkup()} />
         </Flex>
       </ThemeProvider>
     </Fragment>
