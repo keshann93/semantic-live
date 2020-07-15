@@ -1,13 +1,10 @@
 import * as vscode from 'vscode';
-import HtmlInspector from './file-handlers/html';
-import { EditableBlock, FileHandler, SupportedFiletypes, UpdateActiveBlockType } from './file-handlers/types';
 
+export type SupportedFiletypes = 'html' | '';
 export default class Manager {
   // These are protected to allow unit test access because manager is extended
   protected activeEditor: vscode.TextEditor | undefined;
   protected panel: vscode.WebviewPanel;
-  protected activeBlock: EditableBlock | undefined;
-  protected inspector: FileHandler | undefined;
   protected languageId: SupportedFiletypes = '';
 
   constructor(panel: vscode.WebviewPanel) {
@@ -17,7 +14,6 @@ export default class Manager {
       const languageId = activeEditor ? activeEditor.document.languageId : undefined;
 
       if (languageId === 'html') {
-        this.inspector = HtmlInspector;
         this.activeEditor = activeEditor;
         this.languageId = languageId;
       }
@@ -44,96 +40,10 @@ export default class Manager {
   parseFromActiveEditor(): void {
     if (this.activeEditor) {
       const activeFileContent = this.activeEditor.document.getText();
-      const payload = this.getPayloadForBlock(activeFileContent, this.activeEditor.selection.active);
       this.panel.webview.postMessage({
         type: 'activeBlock',
         payload: activeFileContent,
       });
-    }
-  }
-
-  getPayloadForBlock(activeFileContent: string, cursorPosition: vscode.Position) {
-    let payload = null;
-    if (this.inspector) {
-      const blocks = this.inspector.getEditableBlocks(activeFileContent, this.languageId);
-      const activeBlock = this.getActiveBlock(cursorPosition, blocks);
-
-      this.activeBlock = activeBlock;
-      if (activeBlock) {
-        payload = activeBlock.source;
-      }
-    }
-    return payload;
-  }
-
-  getActiveBlock(cursorPositon: vscode.Position, blocks: EditableBlock[]) {
-    const blocksWithinCursor = blocks.filter(({ location }) => {
-      const ruleStartPosition = new vscode.Position(
-        (location && location.start && location.start.line) || 0,
-        (location && location.start && location.start.column) || 0
-      );
-
-      const ruleEndPosition = new vscode.Position(
-        (location && location.end && location.end.line) || 0,
-        (location && location.end && location.end.column) || 0
-      );
-
-      return this.isCursorWithinBlock(ruleStartPosition, ruleEndPosition, cursorPositon);
-    });
-
-    if (blocksWithinCursor.length === 1) {
-      return blocksWithinCursor[0];
-    } else {
-      let closestRule = blocksWithinCursor[0];
-      blocksWithinCursor.forEach(rule => {
-        const { location } = rule;
-        const { location: closestBlockSource } = closestRule;
-        if (
-          (closestBlockSource && closestBlockSource.start && (closestBlockSource.start.line as any)) <
-          (location && location.start && (location.start.line as any))
-        ) {
-          closestRule = rule;
-        }
-      });
-
-      return closestRule;
-    }
-  }
-
-  isCursorWithinBlock(ruleStart: vscode.Position, ruleEnd: vscode.Position, cursorPosition: vscode.Position) {
-    return cursorPosition.isAfterOrEqual(ruleStart) && cursorPosition.isBeforeOrEqual(ruleEnd);
-  }
-
-  async updateActiveBlock(value: string, type: UpdateActiveBlockType) {
-    if (this.activeBlock && this.inspector) {
-      let updatedBlockedString = '';
-
-      if (type === 'add') {
-        updatedBlockedString = this.inspector.updateProperty(value);
-      }
-
-      if (this.activeEditor) {
-        const source = this.activeBlock.location;
-        const ruleStartPosition = new vscode.Position(
-          (source && source.start && source.start.line) || 0,
-          (source && source.start && source.start.column) || 0
-        );
-
-        const ruleEndPosition = new vscode.Position(
-          (source && source.end && source.end.line) || 0,
-          (source && source.end && source.end.column) || 0
-        );
-
-        await this.activeEditor.edit(editBuilder => {
-          editBuilder.replace(new vscode.Range(ruleStartPosition, ruleEndPosition), updatedBlockedString);
-        });
-        if (this.activeEditor && this.inspector) {
-          const activeFileContent = this.activeEditor.document.getText();
-          const blocks = this.inspector.getEditableBlocks(activeFileContent, this.languageId);
-          const activeRule = this.getActiveBlock(this.activeEditor.selection.active, blocks);
-          this.activeBlock = activeRule;
-        }
-      }
     }
   }
 }

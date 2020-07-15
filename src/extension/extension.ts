@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
     if (currentPanel) {
       currentPanel.reveal(vscode.ViewColumn.Two);
     } else {
-      currentPanel = vscode.window.createWebviewPanel('semantic', 'Fabulous', vscode.ViewColumn.Two, {
+      currentPanel = vscode.window.createWebviewPanel('semantic', 'Semantic-live', vscode.ViewColumn.Two, {
         enableScripts: true,
         retainContextWhenHidden: true,
       });
@@ -26,14 +26,6 @@ export function activate(context: vscode.ExtensionContext) {
     };
 
     const manager = new Manager(currentPanel);
-
-    currentPanel.webview.onDidReceiveMessage(
-      message => {
-        manager.updateActiveBlock(message.value, message.type);
-      },
-      undefined,
-      context.subscriptions
-    );
 
     currentPanel.onDidDispose(
       () => {

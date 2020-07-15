@@ -10,7 +10,7 @@ export default class ContentProvider {
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
-    <title>Fabulous</title>
+    <title>Semantic-live</title>
   </head>
   <body>
     <div id="root">
@@ -32,7 +32,7 @@ export default class ContentProvider {
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
-    <title>Fabulous</title>
+    <title>Semantic-live</title>
   </head>
   <body>
     <div id="root">
