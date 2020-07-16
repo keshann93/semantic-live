@@ -1,0 +1,24 @@
+{
+  "projectName": "semantic-live",
+  "projectOwner": "keshann93",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "keshann93",
+      "name": "Keshan Nageswaran",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12506034?v=4",
+      "profile": "http://keshShan.github.io",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

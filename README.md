@@ -1,9 +1,13 @@
+<div align="center">
+<img src="https://raw.githubusercontent.com/keshann93/semantic-live/master/banner.png?token=AC7NHMUDIPQHFUXN644DL7C7CAODS" />
+<br />
+</div>
+
+<br />
 <h1 align="center">📝 Semantic UI / HTML Previewer
 </h1>
 
 ##### Semantic-live introduces a Real-time HTML previewer into Visual Studio Code supports Semantic UI templates.
-
-![intro](https://raw.githubusercontent.com/KeshShan/markdown-live/master/assets/markdown-live-intro.PNG)
 
 ## Introduction
 
@@ -47,8 +51,6 @@ You could copy and paste any [Semantic UI components](http://semantic-ui.com/ele
 
 - Beautifier
 
-## Run & Build from sourcecode
-
 ## What's Under the Hood?
 
 TypeScript!
@@ -56,10 +58,6 @@ TypeScript!
 Semantic-live uses the following
 
 - [Semantic UI](http://semantic-ui.com)
-
-## Acknowledgment
-
-[tui.editor](https://github.com/nhn/tui.editor) is integrated as the markdown editor
 
 ## Changelog
 
@@ -70,6 +68,12 @@ Please check the [Releases](./CHANGELOG.md) \| [Github](https://github.com/kesh
 Have a look at our [contribution guide](./contributing.md).
 
 ## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="http://keshShan.github.io"><img src="https://avatars3.githubusercontent.com/u/12506034?v=4" width="100px;" alt="Keshan Nageswaran"/><br /><sub><b>Keshan Nageswaran</b></sub></a><br /><a href="https://github.com/keshann93/semantic-live/commits?author=keshann93" title="Code">💻</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
