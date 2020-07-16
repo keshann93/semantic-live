@@ -3,7 +3,7 @@ import * as path from 'path';
 
 type SupportedFiletypes = 'html' | 'css' | 'javascript' | 'xhtml' | '';
 const EXTENSION_ID = 'keshan.semantic-live';
-
+const CUSTOM_CSS_PATH = 'resources/custom-style.css';
 const cheerio = require('cheerio');
 const PREFIX_LINK = 'qp';
 const ATTRS = ['src', 'href'];
@@ -155,6 +155,15 @@ export default class Manager {
 
   private addStyles(html: string): string {
     let styles: string = `<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css"> <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>`;
+
+    const extension = vscode.extensions.getExtension(EXTENSION_ID);
+    if (extension) {
+      let extensionPath = extension.extensionPath;
+      let style_path = vscode.Uri.file(`${extensionPath}/${CUSTOM_CSS_PATH}`);
+      let customStyles: string = `<link href="${style_path.with({ scheme: 'vscode-resource' })}" rel="stylesheet" />`;
+      return styles + customStyles + html;
+    }
+
     return styles + html;
   }
 }

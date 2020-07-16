@@ -45,6 +45,17 @@
         }
       }
     ],
+    "colors": [
+      {
+        "id": "semantic.background",
+        "description": "Semantic Live panel backgroudn",
+        "defaults": {
+          "dark": "#111111",
+          "light": "#FFFFFF",
+          "highContrast": "#491d1d"
+        }
+      }
+    ],
     "menus": {
       "editor/title": [
         {
