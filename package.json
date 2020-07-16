@@ -75,6 +75,9 @@
     "pretty-quick": "^1.11.0",
     "rimraf": "^2.6.3"
   },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
