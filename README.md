@@ -16,7 +16,7 @@
   build web interfaces. But I felt like it would be nicer if we can compose bunch of elements and see in realtime how they
   fit together. That's why Semantic-live.
 - Feel free to ask questions, [post issues](https://github.com/keshann93/semantic-live/issues), submit pull request, and request new features.
-- For more information about this project and how to use this extension, please check out our Functionalities section⬇︎
+- For more information about this project and how to use this extension, please check out below sections ⬇︎
 
 ## How?
 
@@ -56,6 +56,8 @@ Semantic-live supports the followings
 - 🌈 Supports `semantic-ui` library component rendering
 - 🌏 Re-renders any changes that was made for current html file or any `javascript`/`css` files that are linked to a html file
 - 🌟 Beautifier
+
+## Demo
 
 ## What's Under the Hood?
 
