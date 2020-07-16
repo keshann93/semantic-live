@@ -1,6 +1,18 @@
-# vscode-semantic-live
+<h1 align="center">📝 Semantic UI / HTML Previewer
+</h1>
 
-Real-time Preview Enabled [Semantic Live](https://github.com/keshann93/vscode-semantic-live) Composer
+##### Semantic-live introduces a Real-time HTML previewer into Visual Studio Code supports Semantic UI templates.
+
+![intro](https://raw.githubusercontent.com/KeshShan/markdown-live/master/assets/markdown-live-intro.PNG)
+
+## Introduction
+
+- Semantic-live is an extension that provides you with many useful functionalities including a live previewer for html, js & css including semmantic-UI library
+- Why [Semantic UI](http://semantic-ui.com) ? It is an awesome library with excellent components that you can use to quickly
+  build web interfaces. But I felt like it would be nicer if we can compose bunch of elements and see in realtime how they
+  fit together. That's why Semantic-live.
+- Feel free to ask questions, post issues, submit pull request, and request new features.
+- For more information about this project and how to use this extension, please check out our Functionalities section⬇︎
 
 ## How?
 
@@ -31,12 +43,6 @@ Copy the following Semantic-UI markup to the vscode html extension file.
 
 You could copy and paste any [Semantic UI components](http://semantic-ui.com/elements/button.html).
 
-## But Why?
-
-[Semantic UI](http://semantic-ui.com) is an awesome library with excellent components that you can use to quickly
-build web interfaces. But I felt like it would be nicer if we can compose bunch of elements and see in realtime how they
-fit together. That's why Semantic Edit.
-
 ## Features
 
 - Beautifier
@@ -45,11 +51,26 @@ fit together. That's why Semantic Edit.
 
 ## What's Under the Hood?
 
-JavaScript!
+TypeScript!
 
-SemanticEdit uses the following
+Semantic-live uses the following
 
 - [Semantic UI](http://semantic-ui.com)
-- [React JS](https://facebook.github.io/react/)
-- [WebPack Build System](https://webpack.github.io/)
-- [Ace Editor](https://ace.c9.io/#nav=about) & [react-ace](https://www.npmjs.com/package/react-ace)
+
+## Acknowledgment
+
+[tui.editor](https://github.com/nhn/tui.editor) is integrated as the markdown editor
+
+## Changelog
+
+Please check the [Releases](./CHANGELOG.md) \| [Github](https://github.com/keshann93/markdown-live/releases) page of this project.
+
+## Contributing
+
+Have a look at our [contribution guide](./contributing.md).
+
+## Contributors
+
+## License
+
+[MIT License](./LICENSE)
