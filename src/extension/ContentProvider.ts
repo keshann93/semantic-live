@@ -13,8 +13,7 @@ export default class ContentProvider {
     <title>Semantic-live</title>
   </head>
   <body>
-    <div id="root">
-    </div>
+    <div id="root"></div>
     <script src="http://localhost:9000/ui.bundle.js" type="text/javascript"></script>
   </body>
 </html>
@@ -35,8 +34,7 @@ export default class ContentProvider {
     <title>Semantic-live</title>
   </head>
   <body>
-    <div id="root">
-    </div>
+    <div id="root"></div>
     <script src="${unBundlePath}" type="text/javascript"></script>
   </body>
 </html>

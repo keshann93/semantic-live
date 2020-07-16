@@ -16,16 +16,15 @@ export function activate(context: vscode.ExtensionContext) {
         retainContextWhenHidden: true,
       });
     }
+    const manager = new Manager(currentPanel);
 
-    currentPanel.webview.html = contentProvider.getContent(context);
+    // currentPanel.webview.html = contentProvider.getContent(context);
 
     const root = join(context.extensionPath, 'icons');
     currentPanel.iconPath = {
       dark: vscode.Uri.file(join(root, 'icon-light.png')),
       light: vscode.Uri.file(join(root, 'icon-dark.png')),
     };
-
-    const manager = new Manager(currentPanel);
 
     currentPanel.onDidDispose(
       () => {
