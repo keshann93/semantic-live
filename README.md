@@ -59,6 +59,8 @@ Semantic-live supports the followings
 
 ## Demo
 
+<img src="https://raw.githubusercontent.com/keshann93/semantic-live/master/assets/semantic-live-demo.gif">
+
 ## What's Under the Hood?
 
 TypeScript!
