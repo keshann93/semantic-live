@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com/keshann93/semantic-live/master/banner.png?token=AC7NHMUDIPQHFUXN644DL7C7CAODS" />
+<img src="https://i.ibb.co/BC6wx72/banner.png" />
 <br />
 </div>
 
