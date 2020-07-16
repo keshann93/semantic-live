@@ -71,7 +71,7 @@ Semantic-live uses the following
 
 ## Changelog
 
-Please check the [Releases](./CHANGELOG.md) \| [Github](https://github.com/keshann93/markdown-live/releases) page of this project.
+Please check the [Releases](./CHANGELOG.md) \| [Github](https://github.com/keshann93/semantic-live/releases) page of this project.
 
 ## Contributing
 
