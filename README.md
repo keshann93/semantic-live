@@ -15,7 +15,7 @@
 - Why [Semantic UI](http://semantic-ui.com) ? It is an awesome library with excellent components that you can use to quickly
   build web interfaces. But I felt like it would be nicer if we can compose bunch of elements and see in realtime how they
   fit together. That's why Semantic-live.
-- Feel free to ask questions, post issues, submit pull request, and request new features.
+- Feel free to ask questions, [post issues](https://github.com/keshann93/semantic-live/issues), submit pull request, and request new features.
 - For more information about this project and how to use this extension, please check out our Functionalities section⬇︎
 
 ## How?
@@ -49,7 +49,13 @@ You could copy and paste any [Semantic UI components](http://semantic-ui.com/ele
 
 ## Features
 
-- Beautifier
+Semantic-live supports the followings
+
+- 💅 Renders instantly any `html` document with its content. It does not support rendering of html which includes `frontend frameworks` or `libraries` (simple html rendering)
+- 🎨 Supports `css` and `js` that gets added within `link` & `script` tags, whether external files or inline code it will render them
+- 🌈 Supports `semantic-ui` library component rendering
+- 🌏 Re-renders any changes that was made for current html file or any `javascript`/`css` files that are linked to a html file
+- 🌟 Beautifier
 
 ## What's Under the Hood?
 
