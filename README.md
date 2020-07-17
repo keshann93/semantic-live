@@ -57,6 +57,13 @@ Semantic-live supports the followings
 - 🌏 Re-renders any changes that was made for current html file or any `javascript`/`css` files that are linked to a html file
 - 🌟 Beautifier
 
+## Getting started
+
+- Install the [Semantic-live](https://marketplace.visualstudio.com/items?itemName=keshan.semantic-live) extension in VS Code
+- After opening a `html` file, click on the <img src="https://raw.githubusercontent.com/keshann93/semantic-live/master/icons/tiny-icon.png" width="20px" /> icon to toggle the side-bar
+- Place your cursor in the html content
+- You should see the sidebar tries to render the html content
+
 ## Demo
 
 <img src="https://raw.githubusercontent.com/keshann93/semantic-live/master/assets/semantic-live-demo.gif">
