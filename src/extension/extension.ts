@@ -1,10 +1,8 @@
 import * as vscode from 'vscode';
-import ContentProvider from './ContentProvider';
 import { join } from 'path';
 import Manager from './Manager';
 
 export function activate(context: vscode.ExtensionContext) {
-  const contentProvider = new ContentProvider();
   let currentPanel: vscode.WebviewPanel | undefined = undefined;
 
   let disposable = vscode.commands.registerCommand('semantic.showPanel', () => {
