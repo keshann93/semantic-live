@@ -9,6 +9,10 @@
 
 ##### Semantic-live introduces a Real-time HTML previewer into Visual Studio Code supports Semantic UI templates.
 
+![Visual Studio Marketplace Version](https://vsmarketplacebadge.apphb.com/version/keshan.semantic-live.svg)
+![Visual Studio Marketplace Installs](https://vsmarketplacebadge.apphb.com/installs/keshan.semantic-live.svg)
+![Visual Studio Marketplace Downloads](https://vsmarketplacebadge.apphb.com/downloads/keshan.semantic-live.svg)
+
 ## Introduction
 
 - Semantic-live is an extension that provides you with many useful functionalities including a live previewer for html, js & css including semmantic-UI library
